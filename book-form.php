@@ -33,18 +33,6 @@ if ($id) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <title>#memtech Bookshelf</title>
-        <style type="text/css">
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th {
-                background-color: #E9E9E9;
-            }
-            td {
-                padding: 5px;
-            }
-        </style>
     </head>
     <body>
         <h1>#memtech Bookshelf</h1>
