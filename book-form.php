@@ -1,31 +1,18 @@
 <?php
 
+require_once dirname(__FILE__) . '/library/base.php';
+
 $id = empty($_GET['id']) ? null : $_GET['id'];
 
 if ($id) {
-
-    $db = realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
-    $dsn = "sqlite:$db";
-    $options = array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    );
-
-    try {
-        $dbh = new PDO($dsn, null, null, $options);
-    } catch (PDOException $e) {
-        echo "Error!: " . $e->getMessage() . "<br />\n";
-        die();
-    }
-
     $book = $dbh->query("SELECT title, author FROM bookshelf WHERE id = $id")->fetch();
-
     $title = $book['title'];
     $author = $book['author'];
 } else {
     $title = empty($_GET['title']) ? null : $_GET['title'];
     $author = empty($_GET['author']) ? null : $_GET['author'];
 }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -33,18 +20,6 @@ if ($id) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <title>#memtech Bookshelf</title>
-        <style type="text/css">
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th {
-                background-color: #E9E9E9;
-            }
-            td {
-                padding: 5px;
-            }
-        </style>
     </head>
     <body>
         <h1>#memtech Bookshelf</h1>
