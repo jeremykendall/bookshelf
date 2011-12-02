@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/library/base.php';
-$books = $dbh->query("SELECT * FROM bookshelf ORDER BY title")->fetchAll();
+$books = $bookshelf->findAll();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
