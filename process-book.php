@@ -6,10 +6,21 @@ if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
     header("Location: /");
 }
 
-if (empty($_POST['id'])) {
-    $dbh->exec("INSERT INTO bookshelf (title, author) VALUES ('{$_POST['title']}', '{$_POST['author']}')");
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+$author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_STRING);
+
+if ($id) {
+    $statement = $dbh->prepare("UPDATE bookshelf SET title = :title, author = :author WHERE id = :id");
+    $statement->bindParam(':title', $title);
+    $statement->bindParam(':author', $author);
+    $statement->bindParam(':id', $id);
+    $statement->execute();
 } else {
-    $dbh->exec("UPDATE bookshelf SET title = '{$_POST['title']}', author = '{$_POST['author']}' WHERE id = {$_POST['id']}");
+    $statement = $dbh->prepare("INSERT INTO bookshelf (title, author) VALUES (:title, :author)");
+    $statement->bindParam(':title', $title);
+    $statement->bindParam(':author', $author);
+    $statement->execute();
 }
 
 header("Location: /");
