@@ -2,15 +2,18 @@
 
 require_once dirname(__FILE__) . '/library/base.php';
 
-$id = empty($_GET['id']) ? null : $_GET['id'];
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if ($id) {
-    $book = $dbh->query("SELECT title, author FROM bookshelf WHERE id = $id")->fetch();
+    $statement = $dbh->prepare('SELECT title, author FROM bookshelf WHERE id = :id');
+    $statement->bindParam(':id', $id);
+    $statement->execute();
+    $book = $statement->fetch();
     $title = $book['title'];
     $author = $book['author'];
 } else {
-    $title = empty($_GET['title']) ? null : $_GET['title'];
-    $author = empty($_GET['author']) ? null : $_GET['author'];
+    $title = filter_input(INPUT_GET, 'title', FILTER_SANITIZE_STRING);
+    $author = filter_input(INPUT_GET, 'author', FILTER_SANITIZE_STRING);
 }
 
 ?>
