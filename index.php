@@ -38,11 +38,11 @@ $books = $dbh->query("SELECT * FROM bookshelf ORDER BY title")->fetchAll();
                 <tr>
                     <td>
                         <a href="book-form.php?id=<?php echo $book['id']; ?>">
-                        <?php echo $book['title']; ?>
+                        <?php echo htmlspecialchars($book['title'], ENT_COMPAT, 'UTF-8'); ?>
                     </a>
                 </td>
                 <td>
-                    <?php echo $book['author']; ?>
+                    <?php echo htmlspecialchars($book['author'], ENT_COMPAT, 'UTF-8'); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
