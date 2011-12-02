@@ -5,10 +5,7 @@ require_once dirname(__FILE__) . '/library/base.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if ($id) {
-    $statement = $dbh->prepare('SELECT title, author FROM bookshelf WHERE id = :id');
-    $statement->bindParam(':id', $id);
-    $statement->execute();
-    $book = $statement->fetch();
+    $book = $bookshelf->find($id);
     $title = $book['title'];
     $author = $book['author'];
 } else {
