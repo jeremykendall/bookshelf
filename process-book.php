@@ -1,23 +1,9 @@
 <?php
 
+require_once dirname(__FILE__) . '/library/base.php';
+
 if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
     header("Location: /");
-}
-
-var_dump($_POST);
-
-$db = realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
-$dsn = "sqlite:$db";
-$options = array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-);
-
-try {
-    $dbh = new PDO($dsn, null, null, $options);
-} catch (PDOException $e) {
-    echo "Error!: " . $e->getMessage() . "<br />\n";
-    die();
 }
 
 if (empty($_POST['id'])) {
