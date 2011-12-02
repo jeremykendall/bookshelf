@@ -4,8 +4,6 @@ if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
     header("Location: /");
 }
 
-var_dump($_POST);
-
 $db = realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
 $dsn = "sqlite:$db";
 $options = array(
