@@ -15,7 +15,7 @@ After cloning the project, you can checkout each tag to watch the application ev
 
 * `release-1.0.0` - First try, with an attempt to represent some typical, first application mistakes
 
-    git checkout -b release-1.0.0 tags/release-1.0.0
+        git checkout -b release-1.0.0 tags/release-1.0.0
 
 * `release-1.1.0` - Moves duplicated code into a base file, adds error reporting
 
@@ -39,4 +39,4 @@ the following:
 
 If you have any permissions problems, run the following:
 
-    `chmod 777 data/db/bookshelf.db`
+        chmod 777 data/db/bookshelf.db
