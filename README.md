@@ -19,15 +19,15 @@ After cloning the project, you can checkout each tag to watch the application ev
 
 * `release-1.1.0` - Moves duplicated code into a base file, adds error reporting
 
-    git checkout -b release-1.1.0 tags/release-1.1.0
+        git checkout -b release-1.1.0 tags/release-1.1.0
 
 * `release-1.2.0` - Filters input, escapes output, uses prepared statements
 
-    git checkout -b release-1.2.0 tags/release-1.2.0
+        git checkout -b release-1.2.0 tags/release-1.2.0
 
 * `release-1.3.0` - Adds a pseudo-service layer/DAO to abstract PDO calls
 
-    git checkout -b release-1.3.0 tags/release-1.3.0
+        git checkout -b release-1.3.0 tags/release-1.3.0
 
 Usage
 -----
