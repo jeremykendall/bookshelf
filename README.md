@@ -39,7 +39,4 @@ the following:
 
 If you have any permissions problems, run the following:
 
-    chmod 777 data/database.sqlite
-    chmod 777 data/web.log
-
-Enjoy!
+    `chmod 777 data/db/bookshelf.db`
