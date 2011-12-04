@@ -36,7 +36,7 @@ After cloning the project, you can checkout each stage to watch the application 
 Usage
 -----
 
-To use the app, clone it, check out to whichever tag you want, and do
+To use the app, clone it, check out whichever branch you want, and do
 the following:
 
 * Initialize the database via `php data/db/db-setup.php`
