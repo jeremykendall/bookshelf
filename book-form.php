@@ -3,16 +3,14 @@
 require_once dirname(__FILE__) . '/library/base.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$title = null;
+$author = null;
 
 if ($id) {
     $book = $bookshelf->find($id);
     $title = $book['title'];
     $author = $book['author'];
-} else {
-    $title = filter_input(INPUT_GET, 'title', FILTER_SANITIZE_STRING);
-    $author = filter_input(INPUT_GET, 'author', FILTER_SANITIZE_STRING);
-}
-
+} 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
