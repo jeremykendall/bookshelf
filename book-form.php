@@ -8,11 +8,7 @@ if ($id) {
     $book = $dbh->query("SELECT title, author FROM bookshelf WHERE id = $id")->fetch();
     $title = $book['title'];
     $author = $book['author'];
-} else {
-    $title = empty($_GET['title']) ? null : $_GET['title'];
-    $author = empty($_GET['author']) ? null : $_GET['author'];
-}
-
+} 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
