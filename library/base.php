@@ -13,12 +13,24 @@ set_include_path(
     )
 );
 
-function namespaceAutoloader($class)
+// PSR-0 autoloader
+// https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+function autoload($className)
 {
-    include str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+    $className = ltrim($className, '\\');
+    $fileName  = '';
+    $namespace = '';
+    if ($lastNsPos = strripos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+    require $fileName;
 }
 
-spl_autoload_register('namespaceAutoloader');
+spl_autoload_register('autoload');
 
 $db = realpath(dirname(__FILE__) . '/../data/db/bookshelf.db');
 $dsn = 'sqlite:' . $db;
