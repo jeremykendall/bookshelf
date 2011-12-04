@@ -3,6 +3,8 @@
 require_once dirname(__FILE__) . '/library/base.php';
 
 $id = empty($_GET['id']) ? null : $_GET['id'];
+$title = null;
+$author = null;
 
 if ($id) {
     $book = $dbh->query("SELECT title, author FROM bookshelf WHERE id = $id")->fetch();
