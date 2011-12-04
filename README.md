@@ -10,24 +10,28 @@ that (hopefully) demonstrates some best practices.
 Versions
 --------
 
-This project contains four tags, each representing a stage in the evolution of the app.
-After cloning the project, you can checkout each tag to watch the application evolve:
+This project contains five "stage" branches, each representing a stage in the evolution of the app.
+After cloning the project, you can checkout each stage to watch the application evolve:
 
-* `release-1.0.0` - First try, with an attempt to represent some typical, first application mistakes
+* stage0 - First try, with an attempt to represent some typical, first application mistakes
 
-        git checkout -b release-1.0.0 tags/release-1.0.0
+        git checkout -b stage0 origin/stage0
 
-* `release-1.1.0` - Moves duplicated code into a base file, adds error reporting
+* stage1 - Moves duplicated code into a base file, adds error reporting
 
-        git checkout -b release-1.1.0 tags/release-1.1.0
+        git checkout -b stage1 origin/stage1
 
-* `release-1.2.0` - Filters input, escapes output, uses prepared statements
+* stage1.5 - Corrects notices thrown after turning error reporting on
 
-        git checkout -b release-1.2.0 tags/release-1.2.0
+        git checkout -b stage1.5 origin/stage1.5
 
-* `release-1.3.0` - Adds a pseudo-service layer/DAO to abstract PDO calls
+* stage2 - Filters input, escapes output, uses prepared statements
 
-        git checkout -b release-1.3.0 tags/release-1.3.0
+        git checkout -b stage2 origin/stage2
+
+* stage3 - Adds a pseudo-service layer/DAO to abstract PDO calls
+
+        git checkout -b stage3 origin/stage3
 
 Usage
 -----
