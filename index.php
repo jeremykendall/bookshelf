@@ -34,21 +34,21 @@ $books = $dbh->query("SELECT * FROM bookshelf ORDER BY title")->fetchAll();
                 <tr>
                     <th>Title</th><th>Author</th>
                 </tr>
-            <?php foreach ($books as $book): ?>
-                <tr>
-                    <td>
-                        <a href="book-form.php?id=<?php echo $book['id']; ?>">
-                        <?php echo $book['title']; ?>
-                    </a>
-                </td>
-                <td>
-                    <?php echo $book['author']; ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-                    </table>
+                <?php foreach ($books as $book): ?>
+                    <tr>
+                        <td>
+                            <a href="book-form.php?id=<?php echo $book['id']; ?>">
+                                <?php echo $book['title']; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo $book['author']; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         <?php else: ?>
-                            <p>We have no books!</p>
+            <p>We have no books!</p>
         <?php endif; ?>
     </body>
 </html>
