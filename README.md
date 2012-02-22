@@ -1,7 +1,7 @@
 bookshelf
 =========
 
-This application was created to accompany my Intro to #memtech: PHP presentation.
+This application was created to accompany my Intro to PHP/PHP 102 presentations.
 
 The purpose of the application is to show the evolution of a contrived "first" application;
 from a nice try with some typical, horrific mistakes to a slightly more mature application
