@@ -7,7 +7,7 @@ $books = $bookshelf->findAll();
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <title>#memtech Bookshelf</title>
+        <title>Bookshelf</title>
         <style type="text/css">
             table {
                 border: 1px solid black;
@@ -23,7 +23,7 @@ $books = $bookshelf->findAll();
         </style>
     </head>
     <body>
-        <h1>#memtech Bookshelf</h1>
+        <h1>Bookshelf</h1>
 
         <p>
             <a href="book-form.php">Add Book</a>
