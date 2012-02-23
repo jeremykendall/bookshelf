@@ -68,11 +68,13 @@ class BookshelfService
     public function save(array $options)
     {
         if ($options['id']) {
-            $statement = $this->_dbh->prepare("UPDATE bookshelf SET title = :title, author = :author WHERE id = :id");
+            $sql = 'UPDATE bookshelf SET title = :title, author = :author WHERE id = :id';
+            $statement = $this->_dbh->prepare($sql);
             $statement->execute($options);
         } else {
+            $sql = 'INSERT INTO bookshelf (title, author) VALUES (:title, :author)';
+            $statement = $this->_dbh->prepare($sql);
             unset($options['id']);
-            $statement = $this->_dbh->prepare("INSERT INTO bookshelf (title, author) VALUES (:title, :author)");
             $statement->execute($options);
         }
     }
