@@ -16,7 +16,6 @@ $options = array(
 try {
     $dbh = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
-    throw $e;
     echo 'Error!: ' . $e->getMessage();
     die();
 }
