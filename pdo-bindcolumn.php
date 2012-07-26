@@ -1,9 +1,5 @@
 <?php
 
-//$dsn = 'sqlite:' . realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
-//$username = null;
-//$password = null;
-
 $dsn = 'mysql:host=localhost;dbname=bookshelf';
 $username = 'testuser';
 $password = 'testpass';
@@ -21,18 +17,19 @@ try {
 }
 
 $stmt = $dbh->query('SELECT id, title, author FROM bookshelf ORDER BY title');
-$count = $stmt->rowCount();
+$stmt->bindColumn('title', $title);
+$stmt->bindColumn('author', $author);
 
 ?>
-<p>There are <?php echo $count; ?> books in the database.</p>
+
 <table>
     <tr>
         <th>Title</th><th>Author</th>
     </tr>
     <?php
-    foreach ($stmt as $row) {
+    while ($stmt->fetch(PDO::FETCH_BOUND)) {
         echo "<tr>";
-        echo "<td>{$row['title']}</td><td>{$row['author']}</td>";
+        echo "<td>$title</td><td>$author</td>";
         echo "</tr>";
     }
     ?>
