@@ -21,10 +21,9 @@ try {
 }
 
 $stmt = $dbh->query('SELECT id, title, author FROM bookshelf ORDER BY title');
-$count = $stmt->rowCount();
 
 ?>
-<p>There are <?php echo $count; ?> books in the database.</p>
+
 <table>
     <tr>
         <th>Title</th><th>Author</th>
