@@ -4,7 +4,7 @@
 //$username = null;
 //$password = null;
 
-$dsn = 'mysql:host=localhost;dbname=bookshelf;username=testuser;password=testpass';
+$dsn = 'mysql:host=localhost;dbname=bookshelf';
 $username = 'testuser';
 $password = 'testpass';
 
