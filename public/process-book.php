@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/library/base.php';
+require_once dirname(__FILE__) . '/../library/base.php';
 
 if (strtolower($_SERVER['REQUEST_METHOD']) == 'get') {
     header('Location: /');

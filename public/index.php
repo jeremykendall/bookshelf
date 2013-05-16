@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/library/base.php';
+require_once dirname(__FILE__) . '/../library/base.php';
 $books = $bookshelf->findAll();
 ?>
 
