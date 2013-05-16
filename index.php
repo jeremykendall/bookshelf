@@ -1,8 +1,4 @@
 <?php
-
-error_reporting(-1);
-ini_set('display_errors', 1);
-
 $db = mysql_connect('localhost', 'testuser', 'testpass');
 mysql_select_db('bookshelf', $db);
 
@@ -37,7 +33,7 @@ $result = mysql_query($query);
         </p>
         <table>
             <tr>
-                <th>Title</th><th>Author</th>
+                <th>Title</th><th>Author</th><th>(delete)</th>
             </tr>
             <?php while ($book = mysql_fetch_assoc($result)): ?>
                 <tr>
@@ -48,6 +44,9 @@ $result = mysql_query($query);
                     </td>
                     <td>
                         <?php echo $book['author']; ?>
+                    </td>
+                    <td>
+                        <a href="delete-book.php?id=<?php echo $book['id']; ?>">[ X ]</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
