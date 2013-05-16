@@ -23,7 +23,7 @@ class BookshelfService
 
     /**
      * Public constructor
-     * 
+     *
      * @param PDO $dbh database handle
      */
     public function __construct(\PDO $dbh)
@@ -34,7 +34,7 @@ class BookshelfService
     /**
      * Find book by its id
      *
-     * @param  int $id
+     * @param  int   $id
      * @return array
      */
     public function find($id)
@@ -43,27 +43,29 @@ class BookshelfService
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(':id', $id);
         $statement->execute();
+
         return $statement->fetch();
     }
 
     /**
-     * Find all books 
-     * 
+     * Find all books
+     *
      * @return array
      */
     public function findAll()
     {
         $sql = 'SELECT * FROM bookshelf ORDER BY title';
+
         return $this->_dbh->query($sql)->fetchAll();
     }
 
     /**
      * Saves or updates a book.
-     * 
+     *
      * $options should be an associative array with keys for
      * id, title, and author
-     * 
-     * @param array $options 
+     *
+     * @param array $options
      */
     public function save(array $options)
     {
@@ -79,4 +81,16 @@ class BookshelfService
         }
     }
 
+    /**
+     * Delete book by its id
+     *
+     * @param int $id
+     */
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM bookshelf WHERE id = :id';
+        $statement = $this->dbh->prepare($sql);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+    }
 }
