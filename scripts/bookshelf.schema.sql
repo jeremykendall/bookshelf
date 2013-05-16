@@ -1,5 +1,6 @@
 CREATE TABLE bookshelf (
-    id INTEGER PRIMARY KEY,
-    title,
-    author
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
 );
