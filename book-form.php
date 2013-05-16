@@ -8,8 +8,8 @@ $author = null;
 
 if ($id) {
     $book = $bookshelf->find($id);
-    $title = $book['title'];
-    $author = $book['author'];
+    $title = htmlspecialchars($book['title'], ENT_COMPAT, 'UTF-8');
+    $author = htmlspecialchars($book['author'], ENT_COMPAT, 'UTF-8');
 } 
 ?>
 
