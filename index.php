@@ -1,19 +1,13 @@
 <?php
-$db = realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
-$dsn = "sqlite:$db";
-$options = array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-);
 
-try {
-    $dbh = new PDO($dsn, null, null, $options);
-} catch (PDOException $e) {
-    echo "Error!: " . $e->getMessage() . "<br />\n";
-    die();
-}
+error_reporting(-1);
+ini_set('display_errors', 1);
 
-$books = $dbh->query("SELECT * FROM bookshelf ORDER BY title")->fetchAll();
+$db = mysql_connect('localhost', 'testuser', 'testpass');
+mysql_select_db('bookshelf', $db);
+
+$query = "SELECT * FROM bookshelf ORDER BY title";
+$result = mysql_query($query);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -41,27 +35,22 @@ $books = $dbh->query("SELECT * FROM bookshelf ORDER BY title")->fetchAll();
         <p>
             <a href="book-form.php">Add Book</a>
         </p>
-
-        <?php if (count($books) > 0): ?>
-            <table>
+        <table>
+            <tr>
+                <th>Title</th><th>Author</th>
+            </tr>
+            <?php while ($book = mysql_fetch_assoc($result)): ?>
                 <tr>
-                    <th>Title</th><th>Author</th>
+                    <td>
+                        <a href="book-form.php?id=<?php echo $book['id']; ?>">
+                            <?php echo $book['title']; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php echo $book['author']; ?>
+                    </td>
                 </tr>
-                <?php foreach ($books as $book): ?>
-                    <tr>
-                        <td>
-                            <a href="book-form.php?id=<?php echo $book['id']; ?>">
-                                <?php echo $book['title']; ?>
-                            </a>
-                        </td>
-                        <td>
-                            <?php echo $book['author']; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        <?php else: ?>
-            <p>We have no books!</p>
-        <?php endif; ?>
+            <?php endwhile; ?>
+        </table>
     </body>
 </html>

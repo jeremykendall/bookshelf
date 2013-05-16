@@ -4,21 +4,12 @@ $id = empty($_GET['id']) ? null : $_GET['id'];
 
 if ($id) {
 
-    $db = realpath(dirname(__FILE__) . '/data/db/bookshelf.db');
-    $dsn = "sqlite:$db";
-    $options = array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    );
+    $db = mysql_connect('localhost', 'testuser', 'testpass');
+    mysql_select_db('bookshelf', $db);
 
-    try {
-        $dbh = new PDO($dsn, null, null, $options);
-    } catch (PDOException $e) {
-        echo "Error!: " . $e->getMessage() . "<br />\n";
-        die();
-    }
-
-    $book = $dbh->query("SELECT title, author FROM bookshelf WHERE id = $id")->fetch();
+    $query = "SELECT title, author FROM bookshelf WHERE id = $id";
+    $result = mysql_query($query);
+    $book = mysql_fetch_assoc($result);
 
     $title = $book['title'];
     $author = $book['author'];
