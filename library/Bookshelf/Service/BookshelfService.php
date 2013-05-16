@@ -19,7 +19,7 @@ class BookshelfService
     /**
      * @var PDO database handle
      */
-    private $_dbh;
+    private $dbh;
 
     /**
      * Public constructor
@@ -28,7 +28,7 @@ class BookshelfService
      */
     public function __construct(\PDO $dbh)
     {
-        $this->_dbh = $dbh;
+        $this->dbh = $dbh;
     }
 
     /**
@@ -40,7 +40,7 @@ class BookshelfService
     public function find($id)
     {
         $sql = 'SELECT * FROM bookshelf WHERE id = :id';
-        $statement = $this->_dbh->prepare($sql);
+        $statement = $this->dbh->prepare($sql);
         $statement->bindParam(':id', $id);
         $statement->execute();
 
@@ -56,7 +56,7 @@ class BookshelfService
     {
         $sql = 'SELECT * FROM bookshelf ORDER BY title';
 
-        return $this->_dbh->query($sql)->fetchAll();
+        return $this->dbh->query($sql)->fetchAll();
     }
 
     /**
@@ -71,11 +71,11 @@ class BookshelfService
     {
         if ($options['id']) {
             $sql = 'UPDATE bookshelf SET title = :title, author = :author WHERE id = :id';
-            $statement = $this->_dbh->prepare($sql);
+            $statement = $this->dbh->prepare($sql);
             $statement->execute($options);
         } else {
             $sql = 'INSERT INTO bookshelf (title, author) VALUES (:title, :author)';
-            $statement = $this->_dbh->prepare($sql);
+            $statement = $this->dbh->prepare($sql);
             unset($options['id']);
             $statement->execute($options);
         }
