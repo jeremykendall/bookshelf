@@ -32,17 +32,20 @@ $books = $bookshelf->findAll();
         <?php if (count($books) > 0): ?>
             <table>
                 <tr>
-                    <th>Title</th><th>Author</th>
+                    <th>Title</th><th>Author</th><th>(delete)</th>
                 </tr>
             <?php foreach ($books as $book): ?>
                 <tr>
                     <td>
-                        <a href="book-form.php?id=<?php echo $book['id']; ?>">
-                        <?php echo htmlspecialchars($book['title'], ENT_COMPAT, 'UTF-8'); ?>
-                    </a>
-                </td>
-                <td>
-                    <?php echo htmlspecialchars($book['author'], ENT_COMPAT, 'UTF-8'); ?>
+                        <a href="book-form.php?id=<?php echo htmlspecialchars($book['id'], ENT_COMPAT, 'UTF-8'); ?>">
+                            <?php echo htmlspecialchars($book['title'], ENT_COMPAT, 'UTF-8'); ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php echo htmlspecialchars($book['author'], ENT_COMPAT, 'UTF-8'); ?>
+                    </td>
+                    <td>
+                        <a href="delete-book.php?id=<?php echo htmlspecialchars($book['id'], ENT_COMPAT, 'UTF-8'); ?>">[ X ]</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
