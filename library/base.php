@@ -32,19 +32,20 @@ function autoload($className)
 
 spl_autoload_register('autoload');
 
-$db = realpath(dirname(__FILE__) . '/../data/db/bookshelf.db');
-$dsn = 'sqlite:' . $db;
 $options = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 );
 
+$dsn = 'mysql:host=localhost;dbname=bookshelf;charset=utf8';
+$username = 'testuser';
+$password = 'testpass';
+
 try {
-    $dbh = new PDO($dsn, null, null, $options);
+    $dbh = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
-    throw $e;
-    echo 'Error!: ' . $e->getMessage();
-    die();
+    error_log($e->getMessage(), 3, '../logs/errors.log');
+    echo 'An error occurred while trying to connect to the database.';
 }
 
 $bookshelf = new Bookshelf\Service\BookshelfService($dbh);
